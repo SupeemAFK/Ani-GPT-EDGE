@@ -41,9 +41,9 @@
       const { data: voiceBase64Data } = await axios.post('/api/generate-voice', { text: chatData }) //get voice
       const { data: engTranslation } = await axios.post('/api/translate-eng', { text: chatData }) //get eng translation
 
-      voiceData.value = voiceBase64Data.jp_voice;
+      voiceData.value = voiceBase64Data?.jp_voice;
       inputText.value = ""
-      messages.value.push({ role: "assistant", content: chatData + " Translation: " + engTranslation, name: "Akiko" })
+      messages.value.push({ role: "assistant", content: chatData + " Translation: " + engTranslation?.text, name: "Akiko" })
       conversations.value.push({ role: "assistant", content: chatData, name: "Akiko" })
       loading.value = false
     }
