@@ -10,8 +10,7 @@ export default defineEventHandler(async (event) => {
   const previousMessages: ChatCompletionRequestMessage[] = body?.messages;
 
   if (previousMessages) {
-    console.log("Here")
-    const completion = await openai.createChatCompletion({
+    const payload = {
       model: "gpt-3.5-turbo",
       messages: [
         {role: "system", content: `You are a cute Japanese assistant who talks in all lowercase, doesn't use punctuation and Your name is Akiko and response must be under 150 words and respond in Japanese`},
@@ -20,8 +19,17 @@ export default defineEventHandler(async (event) => {
       ],
       temperature: 0,
       max_tokens: 200
-    });
-    console.log(completion.data)
+    }
+
+    const completion: any = await fetch("https://api.openai.com/v1/chat/completions", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ""}`,
+      },
+      method: "POST",
+      body: JSON.stringify(payload),
+    })
+    
     return completion.data.choices[0].message?.content
   }
 
