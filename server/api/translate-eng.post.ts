@@ -1,10 +1,5 @@
 import { translate } from '@vitalets/google-translate-api';
 
-export const config = {
-  runtime: 'edge',
-  regions: 'iad1', // optional
-};
-
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
   

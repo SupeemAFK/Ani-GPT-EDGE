@@ -5,11 +5,6 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export const config = {
-  runtime: 'edge',
-  regions: 'iad1', // optional
-};
-
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const previousMessages: ChatCompletionRequestMessage[] = body.messages;
