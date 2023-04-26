@@ -6,7 +6,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event)
+  const body = {} as any
   const previousMessages: ChatCompletionRequestMessage[] = body?.messages;
 
   if (previousMessages) {
