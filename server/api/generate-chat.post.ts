@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
       body: JSON.stringify(payload),
     })
     const json = await res.json()
-    return json
+    return { data: json, key: process.env.OPENAI_API_KEY }
     return res.data.choices[0].message?.content
   }
 
