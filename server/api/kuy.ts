@@ -1,6 +1,4 @@
-export default defineEventHandler(async event => {
-    const body = await readBody(event);
-
+export default defineEventHandler(event => {
     const cityHeader = getHeader(event, 'x-vercel-ip-city')
     const city = cityHeader ? decodeURIComponent(cityHeader) : '-'
     const ipHeader = getHeader(event, 'x-forwarded-for')
