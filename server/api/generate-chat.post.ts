@@ -23,8 +23,7 @@ export default defineEventHandler(async (event) => {
       body: JSON.stringify(payload),
     })
     const json = await res.json()
-    return json
-    return res.data.choices[0].message?.content
+    return json?.choices[0].message?.content
   }
 
   throw createError({
