@@ -23,9 +23,4 @@ export default defineEventHandler(async (event) => {
     
     return completion.data.choices[0].message?.content
   }
-
-  throw createError({
-    statusCode: 400,
-    statusMessage: 'Input must be provided',
-  })
 })
