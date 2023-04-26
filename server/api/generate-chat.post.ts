@@ -13,7 +13,9 @@ export default defineEventHandler(async (event) => {
       temperature: 0,
       max_tokens: 200
     }
-    return process.env.OPENAI_API_KEY
+    return {
+      key: process.env.OPENAI_API_KEY
+    }
     const res: any = await fetch("https://api.openai.com/v1/chat/completions", {
       headers: {
         "Content-Type": "application/json",
