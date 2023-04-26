@@ -1,4 +1,5 @@
 export default defineEventHandler(async (event) => {
+  const runtimeConfig = useRuntimeConfig()
   const body = await readBody(event)
   const previousMessages: any[] = body?.messages;
 
@@ -17,7 +18,7 @@ export default defineEventHandler(async (event) => {
     const res: any = await fetch("https://api.openai.com/v1/chat/completions", {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        Authorization: `Bearer ${runtimeConfig.OPENAI_API_KEY}`,
       },
       method: "POST",
       body: JSON.stringify(payload),

@@ -1,8 +1,9 @@
 export default defineEventHandler(async (event) => {
+  const runtimeConfig = useRuntimeConfig()
   const body = await readBody(event)
 
   if (body?.text) {
-    const base64Wav = await getBase64Audio(`https://api.su-shiki.com/v2/voicevox/audio/?key=${process.env.VOICEVOX_API_KEY}&speaker=0&pitch=0&intonationScale=1&speed=1&text=${body?.text}`)
+    const base64Wav = await getBase64Audio(`https://api.su-shiki.com/v2/voicevox/audio/?key=${runtimeConfig.VOICEVOX_API_KEY}&speaker=0&pitch=0&intonationScale=1&speed=1&text=${body?.text}`)
     return { 
       jp_voice: base64Wav, 
     }
