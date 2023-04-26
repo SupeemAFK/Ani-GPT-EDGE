@@ -38,13 +38,13 @@
       conversations.value.push({ role: "user", content: inputText.value, name: "User" })
 
       const { data: chatData } = await axios.post('/api/generate-chat', { messages: conversations.value })
-      const { data: voiceBase64Data } = await axios.post('/api/generate-voice', { text: chatData?.content }) //get voice
-      const { data: engTranslation } = await axios.post('/api/translate-eng', { text: chatData?.content }) //get eng translation
+      const { data: voiceBase64Data } = await axios.post('/api/generate-voice', { text: chatData?.choices[0].message?.content }) //get voice
+      const { data: engTranslation } = await axios.post('/api/translate-eng', { text: chatData?.choices[0].message?.content }) //get eng translation
 
       voiceData.value = voiceBase64Data?.jp_voice;
       inputText.value = ""
-      messages.value.push({ role: "assistant", content: chatData?.content + " Translation: " + engTranslation?.text, name: "Akiko" })
-      conversations.value.push({ role: "assistant", content: chatData, name: "Akiko" })
+      messages.value.push({ role: "assistant", content: chatData?.choices[0].message?.content + " Translation: " + engTranslation?.text, name: "Akiko" })
+      conversations.value.push({ role: "assistant", content: chatData?.choices[0].message?.content, name: "Akiko" })
       loading.value = false
     }
   }
