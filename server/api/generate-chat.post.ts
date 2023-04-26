@@ -1,13 +1,6 @@
-import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
-const configuration = new Configuration({
-    organization: "org-XPLjH6Gx2RpnHEf4Ajg7N2Hj",
-    apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
-
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  const previousMessages: ChatCompletionRequestMessage[] = body?.messages;
+  const previousMessages: any[] = body?.messages;
 
   if (previousMessages) {
     const payload = {
@@ -21,7 +14,7 @@ export default defineEventHandler(async (event) => {
       max_tokens: 200
     }
 
-    const completion: any = await fetch("https://api.openai.com/v1/chat/completions", {
+    const res: any = await fetch("https://api.openai.com/v1/chat/completions", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ""}`,
@@ -29,8 +22,9 @@ export default defineEventHandler(async (event) => {
       method: "POST",
       body: JSON.stringify(payload),
     })
-    
-    return completion.data.choices[0].message?.content
+    const json = await res.json()
+    return json
+    return res.data.choices[0].message?.content
   }
 
   throw createError({
