@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
     const res: any = await fetch("https://api.openai.com/v1/chat/completions", {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ""}`,
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       method: "POST",
       body: JSON.stringify(payload),
