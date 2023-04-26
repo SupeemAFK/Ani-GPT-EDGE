@@ -8,8 +8,9 @@ const openai = new OpenAIApi(configuration);
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const previousMessages: ChatCompletionRequestMessage[] = body?.messages;
-  return previousMessages
+
   if (previousMessages) {
+    console.log("Here")
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [
@@ -20,7 +21,7 @@ export default defineEventHandler(async (event) => {
       temperature: 0,
       max_tokens: 200
     });
-    
+    console.log(completion.data)
     return completion.data.choices[0].message?.content
   }
 
