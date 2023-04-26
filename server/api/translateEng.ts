@@ -1,6 +1,7 @@
 import { translate } from '@vitalets/google-translate-api';
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(event => {
+  async function run() {
     const body = await readBody(event)
   
     if (body?.text) {
@@ -12,5 +13,7 @@ export default defineEventHandler(async (event) => {
       statusCode: 400,
       statusMessage: 'Input must be provided',
     })
+  }
+  run()
 })
   
