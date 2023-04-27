@@ -10,6 +10,7 @@ export default defineEventHandler(async (event) => {
     const res = await fetch('https://translo.p.rapidapi.com/api/v3/translate', {
       method: 'POST',
       headers: {
+        'content-type': 'application/x-www-form-urlencoded',
         'X-RapidAPI-Key': runtimeConfig.RAPID_API_KEY,
         'X-RapidAPI-Host': "translo.p.rapidapi.com"
       },
