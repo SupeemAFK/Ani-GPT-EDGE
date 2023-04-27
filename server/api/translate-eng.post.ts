@@ -1,10 +1,10 @@
-import translator from 'bing-translate-api'
+import translate from '@vitalets/google-translate-api'
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
 
     if (body?.text) {
-        const res = await translator.translate(body?.text, 'ja', 'en')
+        const res = await translate(body?.text, { from: 'ja', to: 'en'})
         return res
     }
   
