@@ -37,8 +37,7 @@
       messages.value.push({ role: "user", content: inputText.value, name: "User" })
       messages.value.push({ role: "loading", content: "", name: "Akiko" })
       conversations.value.push({ role: "user", content: inputText.value, name: "User" })
-      console.log(messages.value)
-      console.log(conversations.value)
+      
       const { data: chatData } = await axios.post('/api/generate-chat', { messages: conversations.value })
       const { data: jpTranslation } = await axios.post('/api/translate-jp', { text: chatData?.choices[0].message?.content }) //get jp translation
       const { data: voiceBase64Data } = await axios.post('/api/generate-voice', { text: jpTranslation?.translated_text }) //get voice
@@ -48,8 +47,6 @@
       messages.value.splice(messages.value.length - 1, 1, { role: "assistant", content: jpTranslation?.translated_text + " Translation: " + chatData?.choices[0].message?.content, name: "Akiko" })
       conversations.value.push({ role: "assistant", content: chatData?.choices[0].message?.content, name: "Akiko" })
       loading.value = false
-      console.log(messages.value)
-      console.log(conversations.value)
     }
   }
 </script>
