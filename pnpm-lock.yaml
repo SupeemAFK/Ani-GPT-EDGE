@@ -5,8 +5,8 @@ dependencies:
     specifier: ^1.3.6
     version: 1.3.6
   bing-translate-api:
-    specifier: ^2.9.1
-    version: 2.9.1
+    specifier: 2.9.0
+    version: 2.9.0
   i:
     specifier: ^0.3.7
     version: 0.3.7
@@ -1436,8 +1436,8 @@ packages:
       file-uri-to-path: 1.0.0
     dev: true
 
-  /bing-translate-api@2.9.1:
-    resolution: {integrity: sha512-DaYqa7iupfj+fj/KeaeZSp5FUY/ZR4sZ6jqoTP0RHkYOUfo7wwoxlhYDkh4VcvBBzuVORnBEgdXBVQrfM4kk7g==}
+  /bing-translate-api@2.9.0:
+    resolution: {integrity: sha512-jvjbKi6qgaD0/Wln9/rlViuhE1DoYGuEku7fBVvNHD4yoahWb8zquxJFkwcMGo+x/RKJpTRzXX5gEI2Vm2ETBQ==}
     dependencies:
       got: 11.8.6
     dev: false
