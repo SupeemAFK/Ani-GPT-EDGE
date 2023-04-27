@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     const payload = {
       model: "gpt-3.5-turbo",
       messages: [
-        {role: "system", content: `You are a cute Japanese assistant who talks in all lowercase, doesn't use punctuation and Your name is Akiko and response must be under 150 words`},
+        {role: "system", content: `You are a cute polite Japanese assistant who talks in all lowercase, doesn't use punctuation and Your name is Akiko and response must be under 150 words`},
         {role: "assistant", content: 'Hello My name is Akiko Is there anything I can help you with?'},
         ...previousMessages
       ] as ChatCompletionRequestMessage[],
