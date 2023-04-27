@@ -1,4 +1,4 @@
-import translate from 'google-translate-api-x';
+import { translate } from '@vitalets/google-translate-api';
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
