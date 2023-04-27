@@ -1,7 +1,9 @@
+import { ChatCompletionRequestMessage } from "openai";
+
 export default defineEventHandler(async (event) => {
   const runtimeConfig = useRuntimeConfig()
   const body = await readBody(event)
-  const previousMessages: any[] = body?.messages;
+  const previousMessages: ChatCompletionRequestMessage[] = body?.messages;
 
   if (previousMessages) {
     const payload = {
@@ -10,7 +12,7 @@ export default defineEventHandler(async (event) => {
         {role: "system", content: `You are a cute Japanese assistant who talks in all lowercase, doesn't use punctuation and Your name is Akiko and response must be under 150 words and respond in Japanese`},
         {role: "assistant", content: 'こんにちは、どうすればお手伝いできますか'},
         ...previousMessages
-      ],
+      ] as ChatCompletionRequestMessage[],
       temperature: 0,
       max_tokens: 200
     }
