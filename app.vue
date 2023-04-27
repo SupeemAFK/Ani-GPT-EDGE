@@ -44,7 +44,7 @@
 
       voiceData.value = voiceBase64Data?.jp_voice;
       inputText.value = ""
-      messages.value.splice(messages.value.length - 1, 1, { role: "assistant", content: chatData?.choices[0].message?.content + " Translation: " + engTranslation?.text, name: "Akiko" })
+      messages.value.splice(messages.value.length - 1, 1, { role: "assistant", content: chatData?.choices[0].message?.content + " Translation: " + engTranslation?.translation, name: "Akiko" })
       conversations.value.push({ role: "assistant", content: chatData?.choices[0].message?.content, name: "Akiko" })
       loading.value = false
     }
