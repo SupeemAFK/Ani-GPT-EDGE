@@ -4,8 +4,8 @@ export default defineEventHandler(async (event) => {
 
   if (body?.text) {
     const encodedParams = new URLSearchParams();
-    encodedParams.set('from', 'ja');
-    encodedParams.set('to', 'en');
+    encodedParams.set('from', 'en');
+    encodedParams.set('to', 'ja');
     encodedParams.set('text', body?.text);
     const res = await fetch('https://translo.p.rapidapi.com/api/v3/translate', {
       method: 'POST',
