@@ -2,7 +2,7 @@
 
 Inspired from [sveltekit-on-the-edge](https://github.com/Rich-Harris/sveltekit-on-the-edge) and [react-on-the-edge](https://github.com/vercel-labs/react-on-the-edge). It uses [Nuxt 3](https://v3.nuxtjs.org/) and [Nitro](https://nitro.unjs.io/) to deploy **Vue** based SSR on the edge.
 
-**Online Demo:** ani-gpt-edge.vercel.app
+**Online Demo:** [ani-gpt-edge.vercel.app](https://ani-gpt-edge.vercel.app/)
 
 
 ## Setup
