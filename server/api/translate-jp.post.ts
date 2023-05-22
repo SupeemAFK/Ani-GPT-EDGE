@@ -3,18 +3,16 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event)
 
   if (body?.text) {
-    const encodedParams = new URLSearchParams();
-    encodedParams.set('to', 'ja');
-    encodedParams.set('text', body?.text);
-    const res = await fetch('https://translo.p.rapidapi.com/api/v3/translate', {
-      method: 'POST',
+    const url = `https://translate287.p.rapidapi.com/translate/?dest=ja&text=${body.text}&src=auto`;
+    const options = {
+      method: 'GET',
       headers: {
-        'content-type': 'application/x-www-form-urlencoded',
         'X-RapidAPI-Key': runtimeConfig.RAPID_API_KEY,
-        'X-RapidAPI-Host': "translo.p.rapidapi.com"
-      },
-      body: encodedParams
-    })
+        'X-RapidAPI-Host': 'translate287.p.rapidapi.com'
+      }
+    };
+
+    const res = await fetch(url, options)
     const text = await res.text();
     return text;
   }
